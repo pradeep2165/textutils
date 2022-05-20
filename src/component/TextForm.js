@@ -6,24 +6,29 @@ export default function TextForm(props) {
   const handelUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted To Upper Case", "success");
   };
   const handelOnChange = (event) => {
     setText(event.target.value);
   };
   const clearText = () => {
     setText("");
+    props.showAlert("Text Cleared", "success");
   };
   const changeLower = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted To Lower Case", "success");
   };
   const copyText = () => {
     navigator.clipboard.writeText(text);
+    props.showAlert("Text Copied", "info");
   };
 
   const removeSpace = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra Spaces Removed", "success");
   };
   return (
     <>
@@ -54,13 +59,13 @@ export default function TextForm(props) {
           className="btn btn-sm btn-primary mx-1 my-1"
           onClick={handelUpClick}
         >
-          Make Upper
+          Convert to Upper
         </button>
         <button
           className="btn btn-sm btn-primary mx-1 my-1"
           onClick={changeLower}
         >
-          Make Lower
+          Convert to Lower
         </button>
         <button className="btn btn-sm btn-primary mx-1 my-1" onClick={copyText}>
           Copy Text
