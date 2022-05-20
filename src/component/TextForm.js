@@ -31,7 +31,9 @@ export default function TextForm(props) {
         <></>
       </div>
       <div children="container">
-        <h1>{props.heading}</h1>
+        <h1 style={{ color: props.mode === "light" ? "#041336" : "white" }}>
+          {props.heading}
+        </h1>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -70,17 +72,23 @@ export default function TextForm(props) {
           Remove ExtraSpace
         </button>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "#041336" : "white" }}
+      >
         <h2>Your Text Summary</h2>
         <p>
           It contains {text ? text.split(" ").length : 0} words and{" "}
           {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} minutes to read.</p>
+        <p>{0.008 * (text ? text.split(" ").length : 0)} minutes to read.</p>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "#041336" : "white" }}
+      >
         <h2>Preview</h2>
-        <p>{!text ? "Enter sometings to preview here" : text}</p>
+        <p>{!text ? "Enter some text to preview here" : text}</p>
       </div>
     </>
   );
