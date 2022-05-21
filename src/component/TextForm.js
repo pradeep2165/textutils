@@ -35,7 +35,7 @@ export default function TextForm(props) {
       <div>
         <></>
       </div>
-      <div children="container">
+      <div className="container">
         <h1 style={{ color: props.mode === "light" ? "#041336" : "white" }}>
           {props.heading}
         </h1>
@@ -83,8 +83,10 @@ export default function TextForm(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          It contains {text ? text.split(" ").length : 0} words and{" "}
-          {text.length} characters
+          It contains {text ? text.split(/\s+/).length : 0} words and{" "}
+          {/* this also work */}
+          {/* It contains{" "}{text ? text.split(" ").filter((element) => {return element.length !== 0;}).length: 0}{" "} */}
+          words and {text.length} characters
         </p>
         <p>{0.008 * (text ? text.split(" ").length : 0)} minutes to read.</p>
       </div>
@@ -93,7 +95,7 @@ export default function TextForm(props) {
         style={{ color: props.mode === "light" ? "#041336" : "white" }}
       >
         <h2>Preview</h2>
-        <p>{!text ? "Enter some text to preview here" : text}</p>
+        <p>{!text ? "Nothing to preview" : text}</p>
       </div>
     </>
   );

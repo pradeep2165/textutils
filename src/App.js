@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import Alert from "./component/Alert";
 import Navbar from "./component/Navbar";
 import About from "./component/About";
@@ -50,7 +49,7 @@ function App() {
                 />
               }
             />
-            <Route exact path="/about" element={<About />} />
+            <Route exact path="/about" element={<About mode={mode} />} />
           </Routes>
         </div>
       </Router>
